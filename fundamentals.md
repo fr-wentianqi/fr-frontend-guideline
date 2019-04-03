@@ -9,11 +9,11 @@ Our application is mostly powered with SPA(Single Page Application) combined wit
 - Application
   - Backend API (Model)
   - SPA
-    - View Model ()
+    - View Model (State)
     - View (UI Component)
     
 ## View Model
-View model is the model consumed by `View`, it's usually not identical with the backend model, it adds or removes some fields for UI purpose, like if the dialog is shown or not, is the page is loading or not. `View` reflects the latest state of `View Model`, in other words, `View` is driven by `View Model`. Take below code snippet as an example.
+View model is the model consumed by `View`, it's usually not identical with the backend model, it adds or removes some fields for UI purpose, like if the dialog is shown or not, if the page is loading or not. `View` reflects the latest state of `View Model`, in other words, `View` is driven by `View Model` (or `State`). Take below code snippet as an example.
 - Model
 ```js
 // User table, defined in backend reflecting how data looks like
@@ -25,7 +25,7 @@ View model is the model consumed by `View`, it's usually not identical with the 
 
 - View Model
 ```js
-// Defined in front-end, usually stored as state
+// Defined in front-end
 {
   user: {
     id: 001,
@@ -43,40 +43,25 @@ View model is the model consumed by `View`, it's usually not identical with the 
 - View
 ```jsx
 // Reflects and manipulates view model
-class UserPanel extends React.Component {
-  render() {
-    const { user, form } = this.props
-    
-    return (
-      <div key={id}>
-        <LoadingIcon loading={user.isLoading} />
-        {
-          form.isEditing
-            ? (
-              <form>
-                <input type="text" value={form.name} />
-                <button type="submit">Save</button>
-              </form>
-            ) : (
-              <h1>{user.name}</h1>
-            )
-        }
-      </div>
-    )
-  }
+// Some code are omitted 
+const User = (props) => {
+  const { user, form } = props
+
+  return (
+    <div key={id}>
+      <LoadingIcon loading={user.isLoading} />
+      {
+        form.isEditing
+          ? (
+            <form>
+              <input name="name" type="text" value={form.name}/>
+              <button type="submit">Save</button>
+            </form>
+          ) : (
+            <h1>{user.name}</h1>
+          )
+      }
+    </div>
+  )
 }
 ```
-
-
-## <a name="sayWhatYouMean" />Say what you mean
-- Code should be as much self-explained, declarative and concise as possible.
-```js
-// Array inclusion checking
-// Bad
-someArray.indexOf(item) !== -1 // The original intention of indexOf is to see where the item is
-
-// Good
-someArray.includes(item)
-```
-
-## <a name="askForWhatYouNeed" />Ask For What You Need
