@@ -1,5 +1,6 @@
 ## Code Convention
 - [Commas/Semicolons](#commas-semicolons)
+- [Naming Conventions](#naming-conventions)
 - [Say What You Mean](#sayWhatYouMean)
 - [Ask For What You Need](#askForWhatYouNeed)
 
@@ -7,6 +8,7 @@
 - Additional trailing comma: Yes
 > Why? This leads to cleaner git diffs. Also makes adding/removing properties more convenient.
 ```diff
+// Bad, without traling comma
 const obj = {
      foo: '',
 -    bar: ''
@@ -14,12 +16,20 @@ const obj = {
 +    yah: ''
 };
 
+// Good, with traling comma
 const obj = {
      foo: '',
      bar: '',
 +    yah: '',
 };
 ```
+
+## <a name="naming-conventions" />Naming Conventions
+- Boolean typed variable: `isXXXX`
+```ts
+const isVisible: boolean = true
+```
+
 
 ## <a name="sayWhatYouMean" />Say what you mean
 - Code should be as much self-explained, declarative and concise as possible.
