@@ -8,5 +8,7 @@ This guideline requires extensive knowledge on modern `Javascript`(ES6 and beyon
 
 ## Contents
 - [Fundamentals](https://github.com/fr-wentianqi/fr-frontend-guideline/blob/master/fundamentals.md)
-- [State Management]()
 - [Code Convention]()
+- Topics
+    - [State Management]()
+    - [Encapsulation]()
