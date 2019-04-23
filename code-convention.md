@@ -25,11 +25,25 @@ const obj = {
 ```
 
 ## <a name="naming-conventions" />Naming Conventions
-- Boolean typed variable: `isXXXX`
+- Boolean: `isXXXX`
 ```ts
 const isVisible: boolean = true
 ```
 
+- Function/Method: `verb + [target]`
+```ts
+// Good
+function getNextPossibleStatus() {}
+handleSubmit = () => {}
+
+// Not very good
+function nexPossibleStatusGetter() {}
+submitHandler() {}
+
+// Bad
+function nextPossibleStatus() {}
+submission = () => {}
+```
 
 ## <a name="sayWhatYouMean" />Say what you mean
 - Code should be as much self-explained, declarative and concise as possible.
